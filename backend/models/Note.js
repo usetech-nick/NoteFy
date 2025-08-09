@@ -12,9 +12,14 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
     tags: {
-      type: String,
+      type: [String],
       lowercase: true,
       trim: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
   { timestamps: true }

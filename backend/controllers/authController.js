@@ -33,6 +33,7 @@ const registerUser = async (req, res) => {
       token,
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "server error", err });
   }
 };
@@ -53,7 +54,7 @@ const loginUser = async (req, res) => {
         message: "Invalid credentials",
       });
     }
-    const token = jwt.sign({ id: _id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 
@@ -64,6 +65,7 @@ const loginUser = async (req, res) => {
       token,
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "server error", err });
   }
 };
