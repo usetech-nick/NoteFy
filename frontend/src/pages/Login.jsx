@@ -13,7 +13,7 @@ export default function Login() {
     setError("");
     try {
       const data = await loginUser(email, password);
-      login(data.user, data.password);
+      login(data.user, data.token);
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Login failed");
